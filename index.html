@@ -1,240 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="A Special Surprise ✨" />
-  <meta property="og:description" content="A special message just for you... 💖" />
-  <meta property="og:image" content="https://files.catbox.moe/iu3gyr.jpg" />
-  <meta property="og:url" content="https://files.catbox.moe/iu3gyr.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="https://files.catbox.moe/iu3gyr.jpg" />
-  <title>A Special Surprise ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Dancing Script', cursive;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="A Special Surprise ✨">
+    <meta property="og:description" content="A special message just for you... 💖">
+    <meta property="og:image" content="https://files.catbox.moe/iu3gyr.jpg">
+    <meta property="og:url" content="https://files.catbox.moe/iu3gyr.jpg">
 
-    .glow-button {
-      box-shadow: 0 0 15px rgba(248, 187, 217, 0.6), 0 0 25px rgba(248, 187, 217, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
-      transition: all 0.3s ease-in-out;
-    }
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
-    .glow-button:hover {
-      box-shadow: 0 0 25px rgba(248, 187, 217, 1), 0 0 40px rgba(248, 187, 217, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.8);
-      transform: scale(1.05);
-    }
+    <meta name="twitter:card" content="https://files.catbox.moe/iu3gyr.jpg">
+    <title>A Special Surprise ✨</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Great+Vibes&family=Satisfy&family=Kaushan+Script&family=Cookie&family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            /* Fallback font for all text */
+            font-family: 'Dancing Script', 'cursive';
+        }
+        
+        .glow-button {
+            box-shadow: 0 0 15px rgba(248, 187, 217, 0.6), 0 0 25px rgba(248, 187, 217, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(248, 187, 217, 1), 0 0 40px rgba(248, 187, 217, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
 
-    #animation-page {
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Dancing Script', cursive;
-      background: linear-gradient(135deg, #2a1845, #4a2c7a, #6a4c96, #8b5a9f);
-      position: relative;
-    }
+        /* --- Animation Page Styles --- */
+        #animation-page {
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, #2a1845, #4a2c7a, #6a4c96, #8b5a9f);
+            position: relative;
+        }
+        .night-sky { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at center, #3d2a5c 0%, #2a1845 70%); overflow: hidden; }
+        .stars { position: absolute; width: 100%; height: 100%; }
+        .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 3s infinite alternate; }
+        @keyframes twinkle { 0% { opacity: 0.4; transform: scale(1); } 100% { opacity: 0.9; transform: scale(1.1); } }
+        .moon { position: absolute; top: 15%; right: 20%; width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, #fff9c4, #f8bbd9); border-radius: 50%; box-shadow: 0 0 15px rgba(255, 249, 196, 0.4); animation: glow 6s ease-in-out infinite alternate; }
+        @keyframes glow { 0% { box-shadow: 0 0 15px rgba(255, 249, 196, 0.4); } 100% { box-shadow: 0 0 25px rgba(255, 249, 196, 0.7); } }
+        .text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%; max-width: 800px; }
+        
+        /* Base styles for animated text */
+        .animated-text {
+            position: absolute;
+            width: 100%;
+            opacity: 0; /* Start hidden for animation */
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            font-size: 2.5rem;
+            line-height: 1.2;
+            will-change: transform, opacity; /* Optimize for animation performance */
+        }
+        
+        /* --- Enter Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; } /* Adds a slight bounce effect */
 
-    .night-sky {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(ellipse at center, #3d2a5c 0%, #2a1845 70%);
-      overflow: hidden;
-    }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fadeInDown { animation: fadeInDown 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
 
-    .stars, .hearts, .sparkles {
-      position: absolute; width: 100%; height: 100%; pointer-events: none;
-    }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-zoomIn { animation: zoomIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
 
-    .star {
-      position: absolute; background: #fff; border-radius: 50%;
-      animation: twinkle 3s infinite alternate;
-    }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotateX(90deg) scale(0.7); }
+            to { opacity: 1; transform: rotateX(0deg) scale(1); }
+        }
+        .animate-rotateIn { animation: rotateIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
 
-    @keyframes twinkle {
-      0% { opacity: 0.4; transform: scale(1); }
-      100% { opacity: 0.9; transform: scale(1.1); }
-    }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInLeft { animation: slideInLeft 0.8s ease-out forwards; }
 
-    .moon {
-      position: absolute; top: 15%; right: 20%; width: 60px; height: 60px;
-      background: radial-gradient(circle at 30% 30%, #fff9c4, #f8bbd9);
-      border-radius: 50%; box-shadow: 0 0 15px rgba(255, 249, 196, 0.4);
-      animation: glow 6s ease-in-out infinite alternate;
-    }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInRight { animation: slideInRight 0.8s ease-out forwards; }
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 15px rgba(255, 249, 196, 0.4); }
-      100% { box-shadow: 0 0 25px rgba(255, 249, 196, 0.7); }
-    }
 
-    .text-container {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%); text-align: center;
-      width: 90%; max-width: 800px;
-    }
+        /* --- Exit Animations --- */
+        @keyframes fadeOutUp {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(-50px) scale(0.9); }
+        }
+        .animate-fadeOutUp { animation: fadeOutUp 0.8s ease-in forwards; }
 
-    .animated-text {
-      position: absolute;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(50px);
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      font-size: 2rem;
-      line-height: 1.3;
-    }
+        @keyframes fadeOutDown {
+            from { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 0; transform: translateY(50px) scale(0.9); }
+        }
+        .animate-fadeOutDown { animation: fadeOutDown 0.8s ease-in forwards; }
 
-    /* Default fallback animation for texts 8–41 */
-    [class^="text-"]:not(.text-1):not(.text-2):not(.text-3):not(.text-4):not(.text-5):not(.text-6):not(.text-7) {
-      color: #ffffff;
-    }
+        @keyframes zoomOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.5); }
+        }
+        .animate-zoomOut { animation: zoomOut 0.8s ease-in forwards; }
 
-    [class^="text-"].show {
-      animation: simpleFadeIn 1s ease-out forwards;
-    }
+        @keyframes rotateOut {
+            from { opacity: 1; transform: rotateX(0deg) scale(1); }
+            to { opacity: 0; transform: rotateX(90deg) scale(0.7); }
+        }
+        .animate-rotateOut { animation: rotateOut 0.8s ease-in forwards; }
 
-    [class^="text-"].hide {
-      animation: simpleFadeOut 0.6s ease-in forwards;
-    }
+        @keyframes slideOutLeft {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(-100%); }
+        }
+        .animate-slideOutLeft { animation: slideOutLeft 0.8s ease-in forwards; }
 
-    @keyframes simpleFadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes slideOutRight {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(100%); }
+        }
+        .animate-slideOutRight { animation: slideOutRight 0.8s ease-in forwards; }
+        
+        /* Specific font styles for each message, as originally intended */
+        .text-1 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-2 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-3 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-4 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-5 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-6 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
+        .text-7 { font-family: 'Amatic SC', cursive; font-weight: 700; color: #8e24aa; font-size: 2.4rem; }
+        
+        /* Replicating font styles for the rest of the messages */
+        .text-8 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-9 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-10 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-11 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-12 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-13 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
+        .text-14 { font-family: 'Amatic SC', cursive; font-weight: 700; color: #8e24aa; font-size: 2.4rem; }
+        .text-15 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-16 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-17 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-18 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-19 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-20 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
+        .text-21 { font-family: 'Amatic SC', cursive; font-weight: 700; color: #8e24aa; font-size: 2.4rem; }
+        .text-22 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-23 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-24 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-25 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-26 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-27 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
+        .text-28 { font-family: 'Amatic SC', cursive; font-weight: 700; color: #8e24aa; font-size: 2.4rem; }
+        .text-29 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-30 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-31 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-32 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-33 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-34 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
+        .text-35 { font-family: 'Amatic SC', cursive; font-weight: 700; color: #8e24aa; font-size: 2.4rem; }
+        .text-36 { font-family: 'Dancing Script', cursive; font-weight: 700; color: #f8bbd9; }
+        .text-37 { font-family: 'Pacifico', cursive; color: #e1bee7; font-size: 2.2rem; }
+        .text-38 { font-family: 'Great Vibes', cursive; color: #ce93d8; font-size: 3rem; }
+        .text-39 { font-family: 'Satisfy', cursive; color: #ba68c8; font-size: 2.8rem; }
+        .text-40 { font-family: 'Kaushan Script', cursive; color: #ab47bc; font-size: 2.6rem; }
+        .text-41 { font-family: 'Cookie', cursive; color: #9c27b0; font-size: 3.2rem; }
 
-    @keyframes simpleFadeOut {
-      0% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-30px); }
-    }
-
-    .heart {
-      position: absolute;
-      color: #f8bbd9;
-      animation: float 8s ease-in-out infinite;
-      font-size: 1.2rem;
-      opacity: 0.6;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-15px) rotate(3deg); }
-      50% { transform: translateY(-8px) rotate(-3deg); }
-      75% { transform: translateY(-12px) rotate(2deg); }
-    }
-
-    .sparkle {
-      position: absolute;
-      color: #fff9c4;
-      animation: sparkle 3s ease-in-out infinite;
-      font-size: 0.8rem;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0); }
-      50% { opacity: 0.8; transform: scale(1); }
-    }
-
-    @media (max-width: 768px) {
-      .animated-text { font-size: 1.5rem; }
-    }
-  </style>
+        .hearts { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+        .heart { position: absolute; color: #f8bbd9; animation: float 8s ease-in-out infinite; font-size: 1.2rem; opacity: 0.6; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-15px) rotate(3deg); } 50% { transform: translateY(-8px) rotate(-3deg); } 75% { transform: translateY(-12px) rotate(2deg); } }
+        .sparkles { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+        .sparkle { position: absolute; color: #fff9c4; animation: sparkle 3s ease-in-out infinite; font-size: 0.8rem; }
+        @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 0.8; transform: scale(1); } }
+        
+        /* Responsive styles for smaller screens */
+        @media (max-width: 768px) {
+            .animated-text { font-size: 1.8rem; }
+            .text-3, .text-6 { font-size: 2.2rem; }
+            .text-4 { font-size: 2rem; }
+            .text-5 { font-size: 1.9rem; }
+        }
+    </style>
 </head>
 <body class="bg-gray-900">
 
-  <!-- Landing Page -->
-  <div id="landing-page" class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#2a1845] to-[#4a2c7a] text-white text-center p-4">
-    <h1 class="text-5xl md:text-7xl mb-4 text-[#f8bbd9]">A Message for Someone Special</h1>
-    <p class="text-2xl md:text-3xl mb-8 text-[#e1bee7]">Are you ready?</p>
-    <button id="reveal-button" class="glow-button bg-pink-300 text-purple-800 font-bold text-2xl py-4 px-8 rounded-full transition-all duration-300 ease-in-out">
-      Click to Unveil Your Surprise 💖
-    </button>
-    <audio id="background-audio" src="https://files.catbox.moe/e9ybdh.mp3" loop></audio>
-  </div>
-
-  <!-- Animation Page -->
-  <div id="animation-page" class="hidden">
-    <div class="night-sky">
-      <div class="stars" id="stars"></div>
-      <div class="moon"></div>
+    <div id="landing-page" class="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#2a1845] to-[#4a2c7a] text-white text-center p-4">
+        <h1 class="text-5xl md:text-7xl mb-4 text-[#f8bbd9]">A Message for Someone Special</h1>
+        <p class="text-2xl md:text-3xl mb-8 text-[#e1bee7]">Are you ready?</p>
+        <button id="reveal-button" class="glow-button bg-pink-300 text-purple-800 font-bold text-2xl py-4 px-8 rounded-full transition-all duration-300 ease-in-out">
+            Click to Unveil Your Surprise 💖
+        </button>
+        <audio id="background-audio" src="https://files.catbox.moe/e9ybdh.mp3" loop></audio>
     </div>
-    <div class="hearts" id="hearts"></div>
-    <div class="sparkles" id="sparkles"></div>
-    <div class="text-container" id="text-container"></div>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const revealButton = document.getElementById('reveal-button');
-      const landingPage = document.getElementById('landing-page');
-      const animationPage = document.getElementById('animation-page');
-      const audio = document.getElementById('background-audio');
+    <div id="animation-page" class="hidden">
+        <div class="night-sky">
+            <div class="stars" id="stars"></div>
+            <div class="moon"></div>
+        </div>
 
-      revealButton.addEventListener('click', () => {
-        audio.play().catch(console.error);
-        landingPage.style.display = 'none';
-        animationPage.style.display = 'block';
-        initializeAnimation();
-      });
-    });
+        <div class="hearts" id="hearts"></div>
+        <div class="sparkles" id="sparkles"></div>
 
-    function initializeAnimation() {
-      const messages = [...Array(41).keys()].map(i => ({
-        text: `Message ${i + 1}`, // Replace with your actual messages
-        class: `text-${i + 1}`
-      }));
+        <div class="text-container" id="text-container">
+            </div>
+    </div>
 
-      const container = document.getElementById('text-container');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealButton = document.getElementById('reveal-button');
+            const landingPage = document.getElementById('landing-page');
+            const animationPage = document.getElementById('animation-page');
+            const audio = document.getElementById('background-audio');
 
-      messages.forEach((msg, index) => {
-        const el = document.createElement('div');
-        el.className = `animated-text ${msg.class}`;
-        el.textContent = msg.text;
-        container.appendChild(el);
-      });
+            revealButton.addEventListener('click', () => {
+                // Play the audio as a direct result of user interaction.
+                audio.play().catch(error => {
+                    console.error("Audio playback failed:", error);
+                });
 
-      const texts = container.querySelectorAll('.animated-text');
+                // Hide landing page and show animation page
+                landingPage.style.display = 'none';
+                animationPage.style.display = 'block';
 
-      let currentIndex = 0;
+                // Initialize the animation
+                initializeAnimation();
+            });
+        });
 
-      function showText(index) {
-        if (index >= texts.length) return;
+        function initializeAnimation() {
+            // --- Data Object for Messages ---
+            // Added 'enterAnimClass' and 'exitAnimClass' for custom animations for each message
+            const messages = [
+                { text: "Hey Adrita 🖤", class: "text-1", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "Happy Girlfriend Day 💜", class: "text-2", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "ik you’ll say 'it's just a day' 😗", class: "text-3", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "but still… I wanted to say this", class: "text-4", enterAnimClass: "animate-slideInLeft", exitAnimClass: "animate-slideOutRight" },
+                { text: "24 November 2024 — the day we met ✨", class: "text-5", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "I didn’t know then…", class: "text-6", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "you’d mean so much to me", class: "text-7", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "28 January 2025 💍", class: "text-8", enterAnimClass: "animate-slideInRight", exitAnimClass: "animate-slideOutLeft" },
+                { text: "we became a thing 💫", class: "text-9", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "and from then…", class: "text-10", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "every little moment mattered", class: "text-11", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "even the silly fights 😤", class: "text-12", enterAnimClass: "animate-slideInLeft", exitAnimClass: "animate-slideOutRight" },
+                { text: "even the long waits 🕰️", class: "text-13", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "even your one-word replies 🙃", class: "text-14", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "sometimes I just wanna bite you 😤👉🧸", class: "text-15", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "or randomly kiss your nose 😚", class: "text-16", enterAnimClass: "animate-slideInRight", exitAnimClass: "animate-slideOutLeft" },
+                { text: "or mess up your hair just to annoy you 😈💇", class: "text-17", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "I know I overthink", class: "text-18", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "I get insecure 😔", class: "text-19", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "sometimes I fear losing you", class: "text-20", enterAnimClass: "animate-slideInLeft", exitAnimClass: "animate-slideOutRight" },
+                { text: "I’m not perfect 😞", class: "text-21", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "but I promise my love is real", class: "text-22", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "I don’t want much", class: "text-23", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "just your time 🕊️", class: "text-24", enterAnimClass: "animate-slideInRight", exitAnimClass: "animate-slideOutLeft" },
+                { text: "your loyalty 🤍", class: "text-25", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "your love 💗", class: "text-26", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "your truth — even if it hurts 💔", class: "text-27", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "sometimes you feel far away", class: "text-28", enterAnimClass: "animate-slideInLeft", exitAnimClass: "animate-slideOutRight" },
+                { text: "but I still hold on", class: "text-29", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "I still wait", class: "text-30", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "because you're worth it 💯", class: "text-31", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "you’re my moonlight 🌙", class: "text-32", enterAnimClass: "animate-slideInRight", exitAnimClass: "animate-slideOutLeft" },
+                { text: "my little storm 🌩️", class: "text-33", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "my cold queen 👑❄️", class: "text-34", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "my safe space ☁️", class: "text-35", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "I don’t say this every day", class: "text-36", enterAnimClass: "animate-slideInLeft", exitAnimClass: "animate-slideOutRight" },
+                { text: "but I love you deeply 🧡", class: "text-37", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" },
+                { text: "not just today…", class: "text-38", enterAnimClass: "animate-fadeInDown", exitAnimClass: "animate-fadeOutDown" },
+                { text: "but always", class: "text-39", enterAnimClass: "animate-zoomIn", exitAnimClass: "animate-zoomOut" },
+                { text: "Forever yours 💌", class: "text-40", enterAnimClass: "animate-slideInRight", exitAnimClass: "animate-slideOutLeft" },
+                { text: "— Samir (pudding) 🧸", class: "text-41", enterAnimClass: "animate-fadeInUp", exitAnimClass: "animate-fadeOutUp" }
+            ];
 
-        if (index > 0) {
-          texts[index - 1].classList.remove('show');
-          texts[index - 1].classList.add('hide');
+            // --- Text Animation Controller ---
+            const textController = {
+                container: document.getElementById('text-container'),
+                texts: [],
+                currentIndex: 0,
+                
+                init() {
+                    // Dynamically create text elements from the messages object
+                    messages.forEach((msg, index) => {
+                        const textEl = document.createElement('div');
+                        textEl.id = `text-${index + 1}`;
+                        textEl.className = `animated-text ${msg.class}`; // Add base and specific font classes
+                        textEl.textContent = msg.text;
+                        this.container.appendChild(textEl);
+                        this.texts.push(textEl); // Populate the texts array with the created elements
+                    });
+                    return this;
+                },
+                
+                showNextText() {
+                    // Stop if we've shown all the messages
+                    if (this.currentIndex >= this.texts.length) {
+                        return;
+                    }
+                    
+                    // Hide the previous text if it exists
+                    if (this.currentIndex > 0) {
+                        const prevText = this.texts[this.currentIndex - 1];
+                        const prevMessage = messages[this.currentIndex - 1]; // Get message data for exit animation
+                        
+                        // Remove previous enter animation class and add specific exit animation class
+                        prevText.classList.remove(prevMessage.enterAnimClass);
+                        prevText.classList.add(prevMessage.exitAnimClass);
+                        
+                        // Remove the element after its hide animation to clean up the DOM.
+                        // Wait a bit longer than the animation duration to ensure it completes.
+                        setTimeout(() => prevText.remove(), 900); 
+                    }
+
+                    // Show the current text
+                    const currentText = this.texts[this.currentIndex];
+                    const currentMessage = messages[this.currentIndex]; // Get message data for enter animation
+                    currentText.classList.add(currentMessage.enterAnimClass); // Add specific enter animation class
+                    
+                    // Schedule the next text to be shown
+                    this.currentIndex++;
+                    setTimeout(() => {
+                        this.showNextText();
+                    }, 3000); // Time each message is shown
+                },
+                
+                start() {
+                    this.currentIndex = 0; // Reset the index on start
+                    this.showNextText();
+                }
+            };
+
+            // --- Decorative Effects ---
+            function createStars() {
+                const container = document.getElementById('stars');
+                for (let i = 0; i < 80; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    const size = Math.random() * 2 + 1;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.animationDelay = `${Math.random() * 3}s`;
+                    star.style.animationDuration = `${Math.random() * 4 + 3}s`;
+                    container.appendChild(star);
+                }
+            }
+
+            function createHearts() {
+                const container = document.getElementById('hearts');
+                const hearts = ['💜', '💖', '💕'];
+                for (let i = 0; i < 8; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.top = `${Math.random() * 100}%`;
+                    heart.style.animationDelay = `${Math.random() * 6}s`;
+                    heart.style.animationDuration = `${Math.random() * 4 + 6}s`;
+                    container.appendChild(heart);
+                }
+            }
+
+            function createSparkles() {
+                const container = document.getElementById('sparkles');
+                const symbols = ['✨', '⭐'];
+                for (let i = 0; i < 12; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    sparkle.style.left = `${Math.random() * 100}%`;
+                    sparkle.style.top = `${Math.random() * 100}%`;
+                    sparkle.style.animationDelay = `${Math.random() * 4}s`;
+                    sparkle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+                    container.appendChild(sparkle);
+                }
+            }
+
+            function addClickSparkles() {
+                document.addEventListener('click', (e) => {
+                    for (let i = 0; i < 3; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.textContent = '✨';
+                        sparkle.style.position = 'absolute';
+                        sparkle.style.left = `${e.clientX + Math.random() * 30 - 15}px`;
+                        sparkle.style.top = `${e.clientY + Math.random() * 30 - 15}px`;
+                        sparkle.style.color = '#fff9c4';
+                        sparkle.style.fontSize = '1.2rem';
+                        sparkle.style.pointerEvents = 'none';
+                        sparkle.style.zIndex = '1000';
+                        sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                        document.body.appendChild(sparkle);
+                        setTimeout(() => sparkle.remove(), 1000);
+                    }
+                });
+            }
+
+            // --- Run Everything ---
+            createStars();
+            createHearts();
+            createSparkles();
+            addClickSparkles();
+            textController.init().start();
         }
-
-        setTimeout(() => {
-          texts[index].classList.add('show');
-        }, index === 0 ? 0 : 400);
-
-        setTimeout(() => {
-          showText(index + 1);
-        }, 3000);
-      }
-
-      showText(currentIndex);
-
-      // Stars, hearts, sparkles
-      function createRandomElements(containerId, className, count, contentArray) {
-        const container = document.getElementById(containerId);
-        for (let i = 0; i < count; i++) {
-          const el = document.createElement('div');
-          el.className = className;
-          el.textContent = contentArray ? contentArray[Math.floor(Math.random() * contentArray.length)] : '';
-          el.style.left = `${Math.random() * 100}%`;
-          el.style.top = `${Math.random() * 100}%`;
-          el.style.animationDelay = `${Math.random() * 4}s`;
-          el.style.animationDuration = `${Math.random() * 4 + 3}s`;
-          container.appendChild(el);
-        }
-      }
-
-      createRandomElements('stars', 'star', 80);
-      createRandomElements('hearts', 'heart', 10, ['💜', '💖', '💕']);
-      createRandomElements('sparkles', 'sparkle', 12, ['✨', '⭐']);
-    }
-  </script>
+    </script>
 </body>
 </html>
